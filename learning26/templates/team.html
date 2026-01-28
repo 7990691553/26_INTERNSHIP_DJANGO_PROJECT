@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<div style="text-align: center;">
+    <h1>My Favourite Team Profile</h1>
+    <h1>{{ team_name }}</h1>
+
+    <!-- WINNER / LOSER CONDITION -->
+    {% if ipl_titles > 3 %}
+        <h2>Status: Champion team</h2>
+    {% else %}
+        <h2>Status: Loser team</h2>
+    {% endif %}
+
+<div style="text-align: left;">
+    <h1>Team Squad</h1>
+
+    <!-- PLAYER LOOP -->
+    {% for player in players %}
+        <h2>{{ forloop.counter }}. {{ player }}</h2>
+    {% endfor %}
+
+</div>
+
+<style>
+    body {
+        background-color: yellow;
+        font-family: Arial, sans-serif;
+    }
+</style>
+
+</body>
+</html>
