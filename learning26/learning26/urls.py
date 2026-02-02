@@ -19,7 +19,7 @@ from django.urls import path
 from . import views
 #from views import test
 
-#localhost:8000/test/
+#localhost:http://127.0.0.1:8000/team/
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("test/",views.test),
