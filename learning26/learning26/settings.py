@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # always register your app name here after creating it using 'django-admin startapp appname' 
     'student',
+    'work',
 ]
 
 MIDDLEWARE = [
