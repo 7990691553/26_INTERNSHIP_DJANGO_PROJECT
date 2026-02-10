@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # always register your app name here after creating it using 'django-admin startapp appname' 
     'student',
     'work',
+    'employee',
 ]
 
 MIDDLEWARE = [
