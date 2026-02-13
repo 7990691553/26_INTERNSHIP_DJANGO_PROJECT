@@ -53,7 +53,6 @@ def employeeFilter(request):
 
     employee18 = Employee.objects.order_by("-salary").values()    #desc
 
-    
 
     #and
     print("query 1",employee) 
@@ -114,3 +113,13 @@ def filterEmployee(request):
     print("filter employees = ",employees)
     #return redirect("employeeList")
     return render(request,"employee/employeeList.html",{"employees":employees})
+
+def sortemployees(request, id):
+    if id == 1:
+        employees = Employee.objects.order_by("age").values()    #ascending
+    elif id == 2:
+        employees = Employee.objects.order_by("-age").values()   #descending
+    else:
+        employees = Employee.objects.all().values()  # Default (no sorting)
+    return render(request,"employee/employeeList.html",{"employees":employees})
+

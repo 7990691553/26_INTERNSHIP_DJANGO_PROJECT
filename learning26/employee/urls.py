@@ -10,4 +10,5 @@ urlpatterns = [
     #path('deleteEmployee/',views.deleteEmployee,name="deleteEmployee")
     path("deleteEmployee/<int:id>",views.deleteEmployee,name="deleteEmployee"),
     path("filterEmployee/",views.filterEmployee,name="filterEmployee"),
+    path("sortemployees/<int:id>",views.sortemployees,name="sortemployees"),
 ]
