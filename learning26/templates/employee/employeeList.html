@@ -27,6 +27,7 @@
             <td>
                 {% comment %} <a href="{% url 'deleteEmployee' %}">DELETE</a> {% endcomment %}
                 <a href = "{% url 'deleteEmployee' emp.id %}">DELETE</a>
+                <a href="{% url 'updateEmployee' emp.id %}">UPDATE</a>  {% comment %}'UPDATE' button will redirect to updateEmployee.html page where we can update the employee details {% endcomment %}
             </td>
         </tr>
         {% endfor %}
