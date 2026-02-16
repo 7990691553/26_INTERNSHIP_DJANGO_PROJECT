@@ -1,0 +1,25 @@
+<h1>SERVICES LIST</h1>
+<a href ="{% url 'createService' %}">CREATE SERVICE</a> 
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in services  %}
+        <tr>
+            <td>{{service.id}}</td>
+            <td>{{service.name}}</td>
+            <td>{{service.status}}</td>
+            <td>{{service.description}}</td>
+            <td>{{service.price}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
