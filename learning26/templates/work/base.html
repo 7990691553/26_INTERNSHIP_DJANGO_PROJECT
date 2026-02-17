@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>eSociety Dashboard</title>
+    <link rel="stylesheet" href="{% static 'work/css/style.css' %}">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>eSociety</h2>
+        <ul>
+            <li><a href="{% url 'dashboard' %}">🏠 Dashboard</a></li>
+            <li><a href="#">🚪 Visitors</a></li>
+            <li><a href="#">📦 Deliveries</a></li>
+            <li><a href="#">👷 Staff</a></li>
+            <li><a href="#">📢 Notices</a></li>
+        </ul>
+    </aside>
+
+    <div class="main-area">
+
+        <header class="topbar">
+            <div class="welcome">Welcome Back, Admin 👋</div>
+            <div class="profile">KP</div>
+        </header>
+
+        <div class="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const counters = document.querySelectorAll(".card p");
+    counters.forEach(counter => {
+        let target = +counter.innerText;
+        let count = 0;
+        let speed = target / 50;
+
+        const updateCount = () => {
+            if (count < target) {
+                count += speed;
+                counter.innerText = Math.ceil(count);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+});
+</script>
+
+
+</body>
+
+</html>

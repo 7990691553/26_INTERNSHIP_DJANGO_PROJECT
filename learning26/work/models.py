@@ -47,6 +47,18 @@ class Visitor(models.Model):
 
     def __str__(self):
         return self.visitorName
+    
+class VisitorEntryLog(models.Model):
+    visitorId = models.ForeignKey(Visitor, on_delete=models.CASCADE)
+    entryTime = models.DateTimeField()
+    exitTime = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        db_table = "visitor_entry_log"
+
+    def __str__(self):
+        return self.visitorId.visitorName
+
 
 
 class Delivery(models.Model):
@@ -67,6 +79,18 @@ class Delivery(models.Model):
 
     def __str__(self):
         return self.deliveryPerson
+    
+class DeliveryLog(models.Model):
+    deliveryId = models.ForeignKey(Delivery, on_delete=models.CASCADE)
+    receivedTime = models.DateTimeField()
+    collectedTime = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        db_table = "delivery_log"
+
+    def __str__(self):
+        return self.deliveryId.deliveryPerson
+
 
 
 class ChildAgeLimit(models.Model):
@@ -112,5 +136,15 @@ class StaffAttendance(models.Model):
     def __str__(self):
         return self.staffName
 
+class SocietyNotice(models.Model):
+    noticeTitle = models.CharField(max_length=100)
+    noticeDescription = models.TextField()
+    postedDate = models.DateField()
+    postedBy = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        db_table = "society_notice"
+
+    def __str__(self):
+        return self.noticeTitle
 

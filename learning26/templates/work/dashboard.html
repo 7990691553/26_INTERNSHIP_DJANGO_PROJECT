@@ -1,0 +1,63 @@
+{% extends 'work/base.html' %}
+
+{% block content %}
+
+<h1 style="margin-bottom:40px; color:white;">Society Overview</h1>
+
+<div class="hero-section">
+    <div>
+        <h2>Society Management Overview</h2>
+        <p>Monitor visitors, deliveries, staff and society activities in real time.</p>
+    </div>
+    <div class="quick-actions">
+        <a href="#" class="action-btn">+ Add Visitor</a>
+        <a href="#" class="action-btn secondary">+ Add Delivery</a>
+    </div>
+</div>
+
+
+<div class="dashboard-cards">
+
+    <div class="card visitors">
+        <h3>Total Visitors</h3>
+        <p>{{ visitor_count }}</p>
+    </div>
+
+    <div class="card delivery">
+        <h3>Total Deliveries</h3>
+        <p>{{ delivery_count }}</p>
+    </div>
+
+    <div class="card children">
+        <h3>Total Children</h3>
+        <p>{{ child_count }}</p>
+    </div>
+
+    <div class="card staff">
+        <h3>Today's Staff</h3>
+        <p>{{ staff_today }}</p>
+    </div>
+
+</div>
+
+<div class="table-card">
+    <h3 style="margin-bottom:20px;">Recent Visitors</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Flat</th>
+            <th>Purpose</th>
+        </tr>
+
+        {% for visitor in recent_visitors %}
+        <tr>
+            <td>{{ visitor.name }}</td>
+            <td>{{ visitor.flat_number }}</td>
+            <td>{{ visitor.purpose }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
