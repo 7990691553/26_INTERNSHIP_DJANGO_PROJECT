@@ -1,44 +1,49 @@
 from django.shortcuts import render, redirect
-from .models import Service
-from .forms import ServiceForm
+from .models import Service, Booking
+from .forms import ServiceForm, BookingForm
 
-# Create your views here.
-def serviceList(request):
-    services = Service.objects.all().order_by("id").values()
-    return render(request, 'services/serviceList.html', {"services":services})
 
-def createService(request):
-    
+# Dashboard
+def dashboard(request):
+    total_services = Service.objects.count()
+    total_bookings = Booking.objects.count()
+
+    context = {
+        'total_services': total_services,
+        'total_bookings': total_bookings,
+    }
+    return render(request, "services/dashboard.html", context)
+
+
+# Service List
+def service_list(request):
+    services = Service.objects.all()
+    return render(request, "services/service_list.html", {'services': services})
+
+
+# Create Service
+def create_service(request):
+    form = ServiceForm()
     if request.method == "POST":
         form = ServiceForm(request.POST)
-
         if form.is_valid():
-          form.save() #it same as create
-          return redirect("serviceList")
-    
-    else:
-        #form object create --> html
-        form = ServiceForm() #form object    
+            form.save()
+            return redirect('services:service_list')
+    return render(request, "services/service_form.html", {'form': form})
 
-    return render(request,"services/createService.html",{"form":form})
 
-def deleteService(request,id):
-    #delete from services where id = 1
-    print("id from url = ",id)
-    Service.objects.filter(id=id).delete()
-    #return HttpResponse("SERVICE DELETED SUCCESSFULLY...")
-    #employee list redirecr
-    return redirect("serviceList") #url --> name -->
+# Booking List
+def booking_list(request):
+    bookings = Booking.objects.all()
+    return render(request, "services/booking_list.html", {'bookings': bookings})
 
-#update --->
-def updateService(request,id):
-    #database existing user... id -->
-    service = Service.objects.get(id=id) #select * from service where id = 1
-    
+
+# Create Booking
+def create_booking(request):
+    form = BookingForm()
     if request.method == "POST":
-        form = ServiceForm(request.POST,instance=service)
-        form.save()
-        return redirect("serviceList")
-    else:
-        form = ServiceForm(instance=service)    
-        return render(request,"services/updateService.html",{"form":form})
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('services:booking_list')
+    return render(request, "services/booking_form.html", {'form': form})

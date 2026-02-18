@@ -1,0 +1,24 @@
+{% extends 'services/base.html' %}
+
+{% block content %}
+<h2>Booking List</h2>
+<a href="{% url 'services:create_booking' %}" class="btn">Add Booking</a>
+
+<table>
+<tr>
+    <th>Customer</th>
+    <th>Service</th>
+    <th>Date</th>
+    <th>Status</th>
+</tr>
+
+{% for booking in bookings %}
+<tr>
+    <td>{{ booking.customer }}</td>
+    <td>{{ booking.service }}</td>
+    <td>{{ booking.service_date }}</td>
+    <td>{{ booking.status }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

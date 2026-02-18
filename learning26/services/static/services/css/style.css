@@ -1,0 +1,49 @@
+body {
+    font-family: Arial;
+    background: #121212;
+    color: white;
+}
+
+nav {
+    background: #1f1f1f;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: #1f1f1f;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+table {
+    width: 100%;
+    background: #1f1f1f;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+th, td {
+    padding: 10px;
+}
+
+.btn {
+    background: #4CAF50;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+}

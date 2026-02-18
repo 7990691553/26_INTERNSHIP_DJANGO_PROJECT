@@ -1,9 +1,12 @@
 from django.urls import path
 from . import views
 
+app_name = "services"
+
 urlpatterns = [
-    path('serviceList/', views.serviceList,name="serviceList"),
-    path('createService/',views.createService,name="createService"),
-    path("deleteService/<int:id>",views.deleteService,name="deleteService"),
-    path("updateService/<int:id>",views.updateService,name="updateService")
+    path('', views.dashboard, name="dashboard"),
+    path('services/', views.service_list, name="service_list"),
+    path('services/create/', views.create_service, name="create_service"),
+    path('bookings/', views.booking_list, name="booking_list"),
+    path('bookings/create/', views.create_booking, name="create_booking"),
 ]
