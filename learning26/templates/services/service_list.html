@@ -1,8 +1,14 @@
 {% extends 'services/base.html' %}
 
 {% block content %}
-<h2>Service List</h2>
+<h2 class="page-title">Service List</h2>
 <a href="{% url 'services:create_service' %}" class="btn">Add Service</a>
+
+{% if request.GET.q %}
+<p style="margin-top:15px;">
+    Showing results for "<strong>{{ request.GET.q }}</strong>"
+</p>
+{% endif %}
 
 <table>
 <tr>

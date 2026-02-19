@@ -1,0 +1,30 @@
+{% extends 'services/base.html' %}
+{% block content %}
+
+<div class="card">
+    <h2>{{ service.name }}</h2>
+
+    <p><strong>Category:</strong> {{ service.category.name }}</p>
+    <p><strong>Status:</strong> {{ service.status }}</p>
+    <p><strong>Price:</strong> ₹ {{ service.price }}</p>
+
+    <hr>
+
+    <p>{{ service.description }}</p>
+</div>
+
+<h3>Providers</h3>
+
+{% if service.providers.all %}
+    {% for provider in service.providers.all %}
+        <div class="card">
+            <p><strong>Name:</strong> {{ provider.name }}</p>
+            <p><strong>Email:</strong> {{ provider.email }}</p>
+            <p><strong>Experience:</strong> {{ provider.experience_years }} years</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No providers assigned.</p>
+{% endif %}
+
+{% endblock %}

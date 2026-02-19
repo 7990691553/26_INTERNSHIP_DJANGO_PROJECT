@@ -14,7 +14,8 @@ class ServiceForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['customer', 'service', 'provider', 'service_date', 'status']
+        fields = ['customer', 'service_date']
         widgets = {
             'service_date': forms.DateInput(attrs={'type': 'date'}),
         }
+

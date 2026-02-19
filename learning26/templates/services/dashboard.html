@@ -1,13 +1,21 @@
 {% extends 'services/base.html' %}
 
 {% block content %}
-<h2>Dashboard</h2>
+<h2 class="page-title">Dashboard</h2>
 
-<div class="card">
-    <h3>Total Services: {{ total_services }}</h3>
-</div>
+<div class="grid">
 
-<div class="card">
-    <h3>Total Bookings: {{ total_bookings }}</h3>
+    <div class="card">
+        <h3>Total Services</h3>
+        <p>{{ total_services }}</p>
+        <a href="{% url 'services:service_list' %}" class="btn">View Services</a>
+    </div>
+
+    <div class="card">
+        <h3>Total Bookings</h3>
+        <p>{{ total_bookings }}</p>
+        <a href="{% url 'services:booking_list' %}" class="btn">View Bookings</a>
+    </div>
+
 </div>
 {% endblock %}

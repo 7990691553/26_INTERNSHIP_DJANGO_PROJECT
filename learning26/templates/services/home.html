@@ -1,0 +1,23 @@
+{% extends 'services/base.html' %}
+{% block content %}
+
+<h2>Welcome to Services Panel</h2>
+<p>Explore our available services below.</p>
+
+{% if services %}
+    {% for service in services %}
+        <div class="card small">
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.description|truncatewords:20 }}</p>
+            <p><strong>Price:</strong> ₹ {{ service.price }}</p>
+
+            <a href="{% url 'services:service_detail' service.id %}">
+                View Details
+            </a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No active services available.</p>
+{% endif %}
+
+{% endblock %}
