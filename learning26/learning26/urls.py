@@ -35,5 +35,6 @@ urlpatterns = [
     path("student/",include("student.urls")),
     path("employee/",include("employee.urls")),
     path("services/",include("services.urls")),
-    path("work/",include("work.urls"))
+    path("work/",include("work.urls")),
+    path("core/",include("core.urls")),
 ]
