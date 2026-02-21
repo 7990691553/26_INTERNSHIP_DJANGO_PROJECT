@@ -1,0 +1,38 @@
+{% extends 'work/base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Visitor Management</h2>
+    <a href="{% url 'add_visitor' %}" class="btn-primary">
+        + Add Visitor
+    </a>
+</div>
+
+<div class="table-card">
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Flat</th>
+    </tr>
+
+    {% for v in visitors %}
+    <tr>
+        <td>{{ v.visitorName }}</td>
+        <td>{{ v.visitorType }}</td>
+        <td>{{ v.visitPurpose }}</td>
+        <td>{{ v.approvalStatus }}</td>
+        <td>{{ v.memberId.flatNo }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No visitors found.</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

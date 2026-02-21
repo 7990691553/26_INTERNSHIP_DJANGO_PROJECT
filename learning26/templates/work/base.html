@@ -13,10 +13,11 @@
         <h2>eSociety</h2>
         <ul>
             <li><a href="{% url 'dashboard' %}">🏠 Dashboard</a></li>
-            <li><a href="#">🚪 Visitors</a></li>
-            <li><a href="#">📦 Deliveries</a></li>
-            <li><a href="#">👷 Staff</a></li>
-            <li><a href="#">📢 Notices</a></li>
+            <li><a href="{% url 'visitor_list' %}">🚪 Visitors</a></li>
+            <li><a href="{% url 'delivery_list' %}">📦 Deliveries</a></li>
+            <li><a href="{% url 'child_list' %}">👶 Children</a></li>
+            <li><a href="{% url 'staff_list' %}">👷 Staff</a></li>
+            <li><a href="{% url 'notice_list' %}">📢 Notices</a></li>
         </ul>
     </aside>
 

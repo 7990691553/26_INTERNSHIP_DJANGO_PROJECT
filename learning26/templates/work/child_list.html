@@ -1,0 +1,44 @@
+{% extends 'work/base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Child Security Management</h2>
+    <a href="{% url 'add_child' %}" class="btn-primary">
+        + Add Child
+    </a>
+</div> 
+
+<div class="table-card">
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>In Time</th>
+        <th>Out Time</th>
+        <th>Photo</th>
+    </tr>
+
+    {% for c in children %}
+    <tr>
+        <td>{{ c.childName }}</td>
+        <td>{{ c.childAge }}</td>
+        <td>{{ c.inTime }}</td>
+        <td>{{ c.outTime }}</td>
+        <td>
+            {% if c.childPhoto %}
+                <img src="{{ c.childPhoto.url }}" width="60">
+            {% else %}
+                No Photo
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No child records found.</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}

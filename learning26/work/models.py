@@ -37,10 +37,12 @@ class Visitor(models.Model):
 
     visitorName = models.CharField(max_length=30)
     visitorType = models.CharField(max_length=15, choices=VISITOR_TYPE)
-    priorPermission = models.BooleanField()
-    approvalStatus = models.CharField(max_length=10, choices=APPROVAL_STATUS)
+    visitPurpose = models.CharField(max_length=100, null=True, blank=True)  # NEW FIELD
+    priorPermission = models.BooleanField(default=False)
+    approvalStatus = models.CharField(max_length=10, choices=APPROVAL_STATUS, default="PENDING")
 
     memberId = models.ForeignKey(User, on_delete=models.CASCADE)
+    createdAt = models.DateTimeField(auto_now_add=True)  # NEW
 
     class Meta:
         db_table = "visitor"
@@ -106,6 +108,7 @@ class ChildAgeLimit(models.Model):
 class Child(models.Model):
     childName = models.CharField(max_length=30)
     childAge = models.IntegerField()
+    childPhoto = models.FileField(upload_to="child_photos/", null=True, blank=True)  # NEW
     inTime = models.TimeField()
     outTime = models.TimeField()
 
@@ -148,3 +151,13 @@ class SocietyNotice(models.Model):
     def __str__(self):
         return self.noticeTitle
 
+class SocietySettings(models.Model):
+    deliveryAllowed = models.BooleanField(default=True)
+    visitorAllowed = models.BooleanField(default=True)
+    defaultAgeLimit = models.IntegerField(default=3)
+
+    class Meta:
+        db_table = "society_settings"
+
+    def __str__(self):
+        return "Society Settings"

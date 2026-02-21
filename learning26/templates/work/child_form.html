@@ -1,0 +1,17 @@
+{% extends 'work/base.html' %}
+
+{% block content %}
+
+<h2 class="page-title">Add Child Entry</h2>
+
+<div class="form-card">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="action-btn">Save Child</button>
+    <a href="{% url 'child_list' %}" class="secondary-btn">Cancel</a>
+</form>
+</div>
+
+{% endblock %}
