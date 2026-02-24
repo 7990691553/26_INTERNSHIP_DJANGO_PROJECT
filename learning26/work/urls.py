@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
 
+    # Your module routes (example)
     path('visitors/', views.visitor_list, name='visitor_list'),
     path('visitors/add/', views.add_visitor, name='add_visitor'),
 

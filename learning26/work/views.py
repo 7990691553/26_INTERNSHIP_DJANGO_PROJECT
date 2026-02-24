@@ -3,7 +3,6 @@ from .models import *
 from .forms import *
 from django.utils.timezone import now
 
-
 def dashboard(request):
     today = now().date()
 
@@ -19,6 +18,7 @@ def dashboard(request):
 
 
 # ---------------- VISITOR ----------------
+
 
 def visitor_list(request):
     visitors = Visitor.objects.all()
@@ -54,7 +54,6 @@ def child_list(request):
     children = Child.objects.all()
     return render(request, "work/child_list.html", {"children": children})
 
-
 def add_child(request):
     form = ChildForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -69,7 +68,6 @@ def staff_list(request):
     staff = StaffAttendance.objects.all()
     return render(request, "work/staff_list.html", {"staff": staff})
 
-
 def add_staff(request):
     form = StaffAttendanceForm(request.POST or None)
     if form.is_valid():
@@ -83,7 +81,6 @@ def add_staff(request):
 def notice_list(request):
     notices = SocietyNotice.objects.all()
     return render(request, "work/notice_list.html", {"notices": notices})
-
 
 def add_notice(request):
     form = NoticeForm(request.POST or None)

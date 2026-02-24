@@ -49,6 +49,7 @@ class Visitor(models.Model):
 
     def __str__(self):
         return self.visitorName
+ 
     
 class VisitorEntryLog(models.Model):
     visitorId = models.ForeignKey(Visitor, on_delete=models.CASCADE)
